@@ -41,3 +41,8 @@ splitToList.factor <- function(src, size, delim) {
     .Call('WushUtility_splitToList_factor', PACKAGE = 'WushUtility', src, size, delim)
 }
 
+#'@export
+syncSize <- function(src) {
+    .Call('WushUtility_syncSize', PACKAGE = 'WushUtility', src)
+}
+

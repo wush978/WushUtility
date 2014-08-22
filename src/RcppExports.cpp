@@ -103,3 +103,18 @@ BEGIN_RCPP
     return __sexp_result;
 END_RCPP
 }
+// syncSize
+IntegerVector syncSize(List src);
+RcppExport SEXP WushUtility_syncSize(SEXP srcSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< List >::type src(srcSEXP );
+        IntegerVector __result = syncSize(src);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
