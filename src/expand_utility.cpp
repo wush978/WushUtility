@@ -56,3 +56,25 @@ const std::string& delim = ",") {
   }
   return retval;
 }
+
+//'@export
+//[[Rcpp::export]]
+SEXP expandOrder(IntegerVector size) {
+  int retval_len = 0;
+  {
+    int *psize = &size[0];
+    #pragma omp parallel for reduction(+:retval_len)
+    for(int i = 0;i < size.size();i++) {
+      retval_len += psize[i];
+    }
+  }
+  IntegerVector retval(retval_len, 0);
+  int k = 0;
+  for(int i = 0;i < size.size();i++) {
+    for(int j = 1;j <= size[i];j++) {
+      retval[k++] = j;
+    }
+  }
+  return retval;
+}
+

@@ -13,6 +13,11 @@ expand <- function(src, size, is_split, delim = ",") {
 }
 
 #'@export
+expandOrder <- function(size) {
+    .Call('WushUtility_expandOrder', PACKAGE = 'WushUtility', size)
+}
+
+#'@export
 ompBase64Decode <- function(src) {
     .Call('WushUtility_ompBase64Decode', PACKAGE = 'WushUtility', src)
 }

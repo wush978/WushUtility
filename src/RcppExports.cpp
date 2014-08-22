@@ -23,6 +23,21 @@ BEGIN_RCPP
     return __sexp_result;
 END_RCPP
 }
+// expandOrder
+SEXP expandOrder(IntegerVector size);
+RcppExport SEXP WushUtility_expandOrder(SEXP sizeSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< IntegerVector >::type size(sizeSEXP );
+        SEXP __result = expandOrder(size);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
 // ompBase64Decode
 SEXP ompBase64Decode(CharacterVector src);
 RcppExport SEXP WushUtility_ompBase64Decode(SEXP srcSEXP) {
