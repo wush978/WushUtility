@@ -5,6 +5,24 @@
 
 using namespace Rcpp;
 
+// expand
+SEXP expand(List src, IntegerVector size, LogicalVector is_split, const std::string& delim = ",");
+RcppExport SEXP WushUtility_expand(SEXP srcSEXP, SEXP sizeSEXP, SEXP is_splitSEXP, SEXP delimSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< List >::type src(srcSEXP );
+        Rcpp::traits::input_parameter< IntegerVector >::type size(sizeSEXP );
+        Rcpp::traits::input_parameter< LogicalVector >::type is_split(is_splitSEXP );
+        Rcpp::traits::input_parameter< const std::string& >::type delim(delimSEXP );
+        SEXP __result = expand(src, size, is_split, delim);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
 // ompSum_numeric
 double ompSum_numeric(NumericVector src);
 RcppExport SEXP WushUtility_ompSum_numeric(SEXP srcSEXP) {
