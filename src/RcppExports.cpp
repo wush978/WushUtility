@@ -23,6 +23,21 @@ BEGIN_RCPP
     return __sexp_result;
 END_RCPP
 }
+// ompBase64Decode
+SEXP ompBase64Decode(CharacterVector src);
+RcppExport SEXP WushUtility_ompBase64Decode(SEXP srcSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< CharacterVector >::type src(srcSEXP );
+        SEXP __result = ompBase64Decode(src);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
 // ompSum_numeric
 double ompSum_numeric(NumericVector src);
 RcppExport SEXP WushUtility_ompSum_numeric(SEXP srcSEXP) {
