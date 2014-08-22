@@ -20,11 +20,13 @@ SEXP splitSize(CharacterVector src, char delim) {
   return retval;
 }
 
+//'@export
 //[[Rcpp::export("splitToList.character")]]
 SEXP splitToList_character(CharacterVector src, int ncol, char delim) {
   
 }
 
+//'@export
 //[[Rcpp::export("splitToList.factor")]]
 SEXP splitToList_factor(IntegerVector src, int ncol, char delim) {
   

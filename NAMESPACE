@@ -2,6 +2,9 @@
 
 S3method(ompSum,default)
 S3method(ompSum,numeric)
+S3method(splitToList,character)
+S3method(splitToList,default)
+S3method(splitToList,factor)
 export(ompSum)
 export(splitSize)
 export(splitToList)
