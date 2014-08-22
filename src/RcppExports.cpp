@@ -5,15 +5,15 @@
 
 using namespace Rcpp;
 
-// ompSum
-double ompSum(NumericVector src);
-RcppExport SEXP WushUtility_ompSum(SEXP srcSEXP) {
+// ompSum_numeric
+double ompSum_numeric(NumericVector src);
+RcppExport SEXP WushUtility_ompSum_numeric(SEXP srcSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::RNGScope __rngScope;
         Rcpp::traits::input_parameter< NumericVector >::type src(srcSEXP );
-        double __result = ompSum(src);
+        double __result = ompSum_numeric(src);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);

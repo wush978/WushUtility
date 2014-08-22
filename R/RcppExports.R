@@ -3,7 +3,7 @@
 
 #'@export
 ompSum.numeric <- function(src) {
-    .Call('WushUtility_ompSum', PACKAGE = 'WushUtility', src)
+    .Call('WushUtility_ompSum_numeric', PACKAGE = 'WushUtility', src)
 }
 
 #'@title Evaluate the size after split
