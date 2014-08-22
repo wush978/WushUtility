@@ -45,8 +45,9 @@ SEXP splitToList_character(CharacterVector src, int size, char delim) {
     buf.reserve(size);
     boost::split(buf, str, boost::algorithm::is_any_of(pdelim));
     int j_max = (size < buf.size() ? size : buf.size());
+    #pragma omp critical
     for(int j = 0;j < j_max;j++) {
-      SET_STRING_ELT(retval_cols[j], i, Rf_mkChar(buf[j].c_str()));
+      SET_STRING_ELT(retval_cols[j], i, Rf_mkChar(buf[j].c_str()));        
     }
   }
   return retval;
