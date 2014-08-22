@@ -6,7 +6,7 @@ Date: 2014-08-22
 Author: Wush Wu
 Maintainer: Wush Wu
      <wush978@gmail.com>
-Description: Some useful functions with openmp supported
+Description: Some useful parallelized functions.
 License: GPL (>= 3)
 Imports: Rcpp (>= 0.11.2)
 LinkingTo: Rcpp

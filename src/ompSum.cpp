@@ -1,6 +1,7 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+//'@export
 // [[Rcpp::export("ompSum.numeric")]]
 double ompSum(NumericVector src) {
   double retval = 0;
