@@ -16,12 +16,12 @@ splitSize <- function(src, delim) {
 }
 
 #'@export
-splitToList.character <- function(src, ncol, delim) {
-    .Call('WushUtility_splitToList_character', PACKAGE = 'WushUtility', src, ncol, delim)
+splitToList.character <- function(src, size, delim) {
+    .Call('WushUtility_splitToList_character', PACKAGE = 'WushUtility', src, size, delim)
 }
 
 #'@export
-splitToList.factor <- function(src, ncol, delim) {
-    .Call('WushUtility_splitToList_factor', PACKAGE = 'WushUtility', src, ncol, delim)
+splitToList.factor <- function(src, size, delim) {
+    .Call('WushUtility_splitToList_factor', PACKAGE = 'WushUtility', src, size, delim)
 }
 

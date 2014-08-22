@@ -37,16 +37,16 @@ BEGIN_RCPP
 END_RCPP
 }
 // splitToList_character
-SEXP splitToList_character(CharacterVector src, int ncol, char delim);
-RcppExport SEXP WushUtility_splitToList_character(SEXP srcSEXP, SEXP ncolSEXP, SEXP delimSEXP) {
+SEXP splitToList_character(CharacterVector src, int size, char delim);
+RcppExport SEXP WushUtility_splitToList_character(SEXP srcSEXP, SEXP sizeSEXP, SEXP delimSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::RNGScope __rngScope;
         Rcpp::traits::input_parameter< CharacterVector >::type src(srcSEXP );
-        Rcpp::traits::input_parameter< int >::type ncol(ncolSEXP );
+        Rcpp::traits::input_parameter< int >::type size(sizeSEXP );
         Rcpp::traits::input_parameter< char >::type delim(delimSEXP );
-        SEXP __result = splitToList_character(src, ncol, delim);
+        SEXP __result = splitToList_character(src, size, delim);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
@@ -54,16 +54,16 @@ BEGIN_RCPP
 END_RCPP
 }
 // splitToList_factor
-SEXP splitToList_factor(IntegerVector src, int ncol, char delim);
-RcppExport SEXP WushUtility_splitToList_factor(SEXP srcSEXP, SEXP ncolSEXP, SEXP delimSEXP) {
+SEXP splitToList_factor(IntegerVector src, int size, char delim);
+RcppExport SEXP WushUtility_splitToList_factor(SEXP srcSEXP, SEXP sizeSEXP, SEXP delimSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::RNGScope __rngScope;
         Rcpp::traits::input_parameter< IntegerVector >::type src(srcSEXP );
-        Rcpp::traits::input_parameter< int >::type ncol(ncolSEXP );
+        Rcpp::traits::input_parameter< int >::type size(sizeSEXP );
         Rcpp::traits::input_parameter< char >::type delim(delimSEXP );
-        SEXP __result = splitToList_factor(src, ncol, delim);
+        SEXP __result = splitToList_factor(src, size, delim);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);

@@ -9,4 +9,4 @@ Maintainer: Wush Wu
 Description: Some useful parallelized functions.
 License: GPL (>= 3)
 Imports: Rcpp (>= 0.11.2)
-LinkingTo: Rcpp
+LinkingTo: Rcpp, BH

@@ -1,4 +1,8 @@
+#include <boost/algorithm/string.hpp>
 #include <Rcpp.h>
+
+typedef std::vector< std::string > StrVec;
+
 using namespace Rcpp;
 
 //'@title Evaluate the size after split
@@ -22,12 +26,38 @@ SEXP splitSize(CharacterVector src, char delim) {
 
 //'@export
 //[[Rcpp::export("splitToList.character")]]
-SEXP splitToList_character(CharacterVector src, int ncol, char delim) {
+SEXP splitToList_character(CharacterVector src, int size, char delim) {
+  char pdelim[2];
+  pdelim[0] = delim;
+  pdelim[1] = 0;
+  List retval(size);
+  SEXP psrc = wrap(src);
+  std::vector<SEXP> retval_cols(size, NULL);
+  for(int i = 0;i < size;i++) {
+    CharacterVector element(src.size());
+    retval[i] = element;
+  }
+  for(int i = 0;i < size;i++) retval_cols[i] = wrap(retval[i]);
+  typedef std::shared_ptr<StrVec> pStrVec;
   
+//  std::vector<pStrVec> global_buffer(src.size(), pStrVec(NULL));
+  #pragma omp parallel for
+  for(int i = 0;i < src.size();i++) {
+    const char* str = CHAR(STRING_ELT(psrc, i));
+    StrVec buf;
+    buf.reserve(size);
+    boost::split(buf, str, boost::algorithm::is_any_of(pdelim));
+    int j_max = (size < buf.size() ? size : buf.size());
+    for(int j = 0;j < j_max;j++) {
+      SET_STRING_ELT(retval_cols[j], i, Rf_mkChar(buf[j].c_str()));
+    }
+  }
+  return retval;
 }
+
 
 //'@export
 //[[Rcpp::export("splitToList.factor")]]
-SEXP splitToList_factor(IntegerVector src, int ncol, char delim) {
+SEXP splitToList_factor(IntegerVector src, int size, char delim) {
   
 }
