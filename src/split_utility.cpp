@@ -38,9 +38,6 @@ SEXP splitToList_character(CharacterVector src, int size, char delim) {
     retval[i] = element;
   }
   for(int i = 0;i < size;i++) retval_cols[i] = wrap(retval[i]);
-  typedef std::shared_ptr<StrVec> pStrVec;
-  
-//  std::vector<pStrVec> global_buffer(src.size(), pStrVec(NULL));
   #pragma omp parallel for
   for(int i = 0;i < src.size();i++) {
     const char* str = CHAR(STRING_ELT(psrc, i));
@@ -59,5 +56,22 @@ SEXP splitToList_character(CharacterVector src, int size, char delim) {
 //'@export
 //[[Rcpp::export("splitToList.factor")]]
 SEXP splitToList_factor(IntegerVector src, int size, char delim) {
-  
+  CharacterVector levels(src.attr("levels"));
+  List retval_levels(splitToList_character(levels, size, delim));
+  List retval(size);
+  std::vector<int*> retval_cols(size, NULL);
+  for(int i = 0;i < size;i++) {
+    IntegerVector element(src.size(), 0);
+    element.attr("levels") = wrap(retval_levels[i]);
+    element.attr("class") = "factor";
+    retval[i] = element;
+  }
+  for(int i = 0;i < size;i++) retval_cols[i] = INTEGER(wrap(retval[i]));
+  #pragma omp parallel for
+  for(int i = 0;i < src.size();i++) {
+    for(int j = 0;j < size;j++) {
+      retval_cols[j][i] = src[i];
+    }
+  }
+  return retval;
 }
