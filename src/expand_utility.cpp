@@ -12,6 +12,7 @@ SEXP expand(SEXP src, IntegerVector& size, bool is_split, const std::string& del
       StrVec buf;
       const char* str = CHAR(STRING_ELT(src, i));
       if (size[i] > 0) boost::split(buf, str, boost::is_any_of(delim));
+      #pragma omp critical
       for(int j = 0;j < size[i];j++) {
         SET_STRING_ELT(pretval, k++, Rf_mkChar(buf[j].c_str()));
       }
