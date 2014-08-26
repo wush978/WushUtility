@@ -10,10 +10,18 @@ SEXP ompBase64Decode(CharacterVector src) {
   #pragma omp parallel for
   for(int i = 0;i < src.size();i++) {
     const char* p = CHAR(STRING_ELT(psrc, i));
-    std::string tmp(Encoding::base64_decode(p));
-    #pragma omp critical
-    {
-      SET_STRING_ELT(pretval, i, Rf_mkChar(tmp.c_str()));
+    try {
+      std::string tmp(Encoding::base64_decode(p));
+      #pragma omp critical
+      {
+        SET_STRING_ELT(pretval, i, Rf_mkChar(tmp.c_str()));
+      }
+    }
+    catch (std::invalid_argument& e) {
+      #pragma omp critical
+      {
+        SET_STRING_ELT(pretval, i, NA_STRING);
+      }
     }
   }
   return retval;
