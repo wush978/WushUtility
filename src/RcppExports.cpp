@@ -53,6 +53,22 @@ BEGIN_RCPP
     return __sexp_result;
 END_RCPP
 }
+// ompReadLines
+SEXP ompReadLines(RawVector src, const std::string& breakline = "\n");
+RcppExport SEXP WushUtility_ompReadLines(SEXP srcSEXP, SEXP breaklineSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< RawVector >::type src(srcSEXP );
+        Rcpp::traits::input_parameter< const std::string& >::type breakline(breaklineSEXP );
+        SEXP __result = ompReadLines(src, breakline);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
 // ompSum_numeric
 double ompSum_numeric(NumericVector src);
 RcppExport SEXP WushUtility_ompSum_numeric(SEXP srcSEXP) {
@@ -62,6 +78,23 @@ BEGIN_RCPP
         Rcpp::RNGScope __rngScope;
         Rcpp::traits::input_parameter< NumericVector >::type src(srcSEXP );
         double __result = ompSum_numeric(src);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+// randomString
+SEXP randomString(int len, char begin = '0', char end = '9');
+RcppExport SEXP WushUtility_randomString(SEXP lenSEXP, SEXP beginSEXP, SEXP endSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< int >::type len(lenSEXP );
+        Rcpp::traits::input_parameter< char >::type begin(beginSEXP );
+        Rcpp::traits::input_parameter< char >::type end(endSEXP );
+        SEXP __result = randomString(len, begin, end);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);

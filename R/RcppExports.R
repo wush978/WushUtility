@@ -23,8 +23,17 @@ ompBase64Decode <- function(src) {
 }
 
 #'@export
+ompReadLines <- function(src, breakline = "\n") {
+    .Call('WushUtility_ompReadLines', PACKAGE = 'WushUtility', src, breakline)
+}
+
+#'@export
 ompSum.numeric <- function(src) {
     .Call('WushUtility_ompSum_numeric', PACKAGE = 'WushUtility', src)
+}
+
+randomString <- function(len, begin = '0', end = '9') {
+    .Call('WushUtility_randomString', PACKAGE = 'WushUtility', len, begin, end)
 }
 
 #'@title Evaluate the size after split
