@@ -84,23 +84,6 @@ BEGIN_RCPP
     return __sexp_result;
 END_RCPP
 }
-// randomString
-SEXP randomString(int len, char begin = '0', char end = '9');
-RcppExport SEXP WushUtility_randomString(SEXP lenSEXP, SEXP beginSEXP, SEXP endSEXP) {
-BEGIN_RCPP
-    SEXP __sexp_result;
-    {
-        Rcpp::RNGScope __rngScope;
-        Rcpp::traits::input_parameter< int >::type len(lenSEXP );
-        Rcpp::traits::input_parameter< char >::type begin(beginSEXP );
-        Rcpp::traits::input_parameter< char >::type end(endSEXP );
-        SEXP __result = randomString(len, begin, end);
-        PROTECT(__sexp_result = Rcpp::wrap(__result));
-    }
-    UNPROTECT(1);
-    return __sexp_result;
-END_RCPP
-}
 // splitSize
 SEXP splitSize(CharacterVector src, char delim);
 RcppExport SEXP WushUtility_splitSize(SEXP srcSEXP, SEXP delimSEXP) {

@@ -32,10 +32,6 @@ ompSum.numeric <- function(src) {
     .Call('WushUtility_ompSum_numeric', PACKAGE = 'WushUtility', src)
 }
 
-randomString <- function(len, begin = '0', end = '9') {
-    .Call('WushUtility_randomString', PACKAGE = 'WushUtility', len, begin, end)
-}
-
 #'@title Evaluate the size after split
 #'@param src character. Strings to be splitted.
 #'@param delim char. Delimiter. Only the first char will be used.
