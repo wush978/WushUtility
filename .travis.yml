@@ -1,11 +1,6 @@
 language: cpp
 script: ./travis-tool.sh run_tests
 
-# "-std=c++11" triggers a warning
-env:
-  - global:
-    - WARNINGS_ARE_ERRORS=0
-
 after_failure:
   - ./travis-tool.sh dump_logs
 
@@ -33,6 +28,9 @@ install:
   - ./travis-tool.sh install_deps
   # Install testthat after running install_deps, otherwise devtools itself might be installed from CRAN or c2d4u
   - ./travis-tool.sh install_github hadley/testthat
+  # due to -std=c++11, there is always a warning
+  - unset WARNINGS_ARE_ERRORS
+
 notifications:
   email:
     on_success: change
