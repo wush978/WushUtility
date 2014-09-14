@@ -23,8 +23,8 @@ install:
   - if [ "$CXX" = "g++" ]; then sudo update-alternatives --set cc /usr/bin/gcc; fi
   - if [ "$CXX" = "g++" ]; then sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++ 30; fi
   - if [ "$CXX" = "g++" ]; then sudo update-alternatives --set c++ /usr/bin/g++; fi
-  - if [ "$CXX" = "g++" ]; then update-alternatives --set gcc "/usr/bin/gcc-4.8"; fi
-  - if [ "$CXX" = "g++" ]; then update-alternatives --set g++ "/usr/bin/g++-4.8"; fi
+  - if [ "$CXX" = "g++" ]; then sudo update-alternatives --set gcc "/usr/bin/gcc-4.8"; fi
+  - if [ "$CXX" = "g++" ]; then sudo update-alternatives --set g++ "/usr/bin/g++-4.8"; fi
   - ./travis-tool.sh install_deps
   # Install testthat after running install_deps, otherwise devtools itself might be installed from CRAN or c2d4u
   - ./travis-tool.sh install_github hadley/testthat
