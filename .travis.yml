@@ -28,8 +28,6 @@ install:
   - ./travis-tool.sh install_deps
   # Install testthat after running install_deps, otherwise devtools itself might be installed from CRAN or c2d4u
   - ./travis-tool.sh install_github hadley/testthat
-  # due to -std=c++11, there is always a warning
-  - unset WARNINGS_ARE_ERRORS
 
 notifications:
   email:
@@ -37,6 +35,5 @@ notifications:
     on_failure: change
 env:
   - global:
-    - WARNINGS_ARE_ERRORS=1
     - _R_CHECK_FORCE_SUGGESTS_=0
     - BOOTSTRAP_LATEX=1
