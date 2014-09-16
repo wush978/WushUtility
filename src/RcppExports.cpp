@@ -149,6 +149,22 @@ BEGIN_RCPP
     return __sexp_result;
 END_RCPP
 }
+// write_svmlight_matrix
+void write_svmlight_matrix(NumericMatrix m, NumericVector y, IntegerVector qid, const std::string& path, bool is_gzip = true);
+RcppExport SEXP WushUtility_write_svmlight_matrix(SEXP mSEXP, SEXP ySEXP, SEXP qidSEXP, SEXP pathSEXP, SEXP is_gzipSEXP) {
+BEGIN_RCPP
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericMatrix >::type m(mSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP );
+        Rcpp::traits::input_parameter< IntegerVector >::type qid(qidSEXP );
+        Rcpp::traits::input_parameter< const std::string& >::type path(pathSEXP );
+        Rcpp::traits::input_parameter< bool >::type is_gzip(is_gzipSEXP );
+        write_svmlight_matrix(m, y, qid, path, is_gzip);
+    }
+    return R_NilValue;
+END_RCPP
+}
 // write_svmlight_dgCMatrix
 void write_svmlight_dgCMatrix(S4 m, NumericVector y, IntegerVector qid, const std::string& path, bool is_gzip = true);
 RcppExport SEXP WushUtility_write_svmlight_dgCMatrix(SEXP mSEXP, SEXP ySEXP, SEXP qidSEXP, SEXP pathSEXP, SEXP is_gzipSEXP) {
