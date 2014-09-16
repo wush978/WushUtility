@@ -28,6 +28,7 @@ install:
   - ./travis-tool.sh install_deps
   # Install testthat after running install_deps, otherwise devtools itself might be installed from CRAN or c2d4u
   - ./travis-tool.sh install_github hadley/testthat
+  - sudo apt-get install libboost-iostreams-dev
 
 notifications:
   email:

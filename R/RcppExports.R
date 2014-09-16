@@ -56,3 +56,8 @@ syncSize <- function(src) {
     .Call('WushUtility_syncSize', PACKAGE = 'WushUtility', src)
 }
 
+#'@export
+write.svmlight.dgCMatrix <- function(m, y, qid, path, is_gzip = TRUE) {
+    invisible(.Call('WushUtility_write_svmlight_dgCMatrix', PACKAGE = 'WushUtility', m, y, qid, path, is_gzip))
+}
+
